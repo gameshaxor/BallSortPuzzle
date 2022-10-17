@@ -313,6 +313,7 @@ var YaGames;
                     ))
                 }
                 postToParent(e) {
+                    return false;
                     const t = this._parentTarget;
                     return t ? (!isUnitedPage() || "messaging" === e.type && "confirm" === e.action || (e.uuid = Math.random().toString(36).substring(2, 15),
                     setTimeout((()=>{
@@ -6279,6 +6280,7 @@ var YaGames;
                 this.updateDisabledState()
             }
             updateDisabledState() {
+                return false;
                 t.Z.postToParent({
                     type: "adv-manager",
                     action: "get-disabled-state"
@@ -6307,6 +6309,7 @@ var YaGames;
                 !0
             }
             showFullscreenAdv({callbacks: r={}}={}) {
+                return false;
                 if (this.openAdLock(r))
                     return this._addCallbacks(r, ["onClose", "onOpen", "onError", "onOffline"]),
                     t.Z.postToParent({
@@ -6323,6 +6326,7 @@ var YaGames;
                     this
             }
             showRewardedVideo({callbacks: r={}}={}) {
+                console.log("--fx--showRewardedVideo--");
                 if (this.openAdLock(r))
                     return this._addCallbacks(r, ["onOpen", "onRewarded", "onClose", "onError"]),
                     t.Z.postToParent({
@@ -6391,6 +6395,7 @@ var YaGames;
                 this.hasAuthValue = e)
             }
             getAuthState() {
+                console.log("--fx--getAuthState--");
                 t.Z.postToParent({
                     type: "auth",
                     action: "has-auth"
@@ -6409,6 +6414,7 @@ var YaGames;
         ;
         const T = new class AuthManagerPublic {
             openAuthDialog() {
+                console.log("--fx--openAuthDialog--");
                 return t.Z.postToParent({
                     type: "auth",
                     action: "auth-dialog-open",
@@ -6608,6 +6614,7 @@ var YaGames;
             w.$g)(n)
         }
         function commonFetchData(e) {
+            console.log("--fx--commonFetchData--");
             const {api: r, authRequired: n, path: o, params: a, timeout: i} = e;
             return new Promise(((e,s)=>{
                 const c = getRequestURL(r, o, a);
@@ -6632,6 +6639,8 @@ var YaGames;
             ))
         }
         function commonPostData(e) {
+            console.log("--fx--commonPostData--");
+
             const {api: r, authRequired: n, data: o, params: a, path: i, timeout: s} = e;
             return new Promise(((e,c)=>{
                 const u = getRequestURL(r, i, a);
@@ -7038,6 +7047,7 @@ var YaGames;
                 this.___test1212()
             }
             getCatalog() {
+                console.log("--fx--getCatalog--");
                 return new Promise(((e,r)=>{
                     t.Z.postToParent({
                         type: "payments",
@@ -7057,6 +7067,7 @@ var YaGames;
                 ))
             }
             purchase(e) {
+                console.log("--fx--purchase--");
                 "object" != typeof e && (e = {
                     id: e,
                     developerPayload: ""
@@ -7094,6 +7105,7 @@ var YaGames;
                 ))
             }
             getPurchases() {
+                console.log("--fx--getPurchases--");
                 return new Promise(((e,r)=>{
                     t.Z.postToParent({
                         type: "payments",
@@ -7119,6 +7131,7 @@ var YaGames;
                 ))
             }
             consumePurchase(e) {
+                console.log("--fx--consumePurchase--");
                 return new Promise(((r,n)=>{
                     t.Z.postToParent({
                         type: "payments",
@@ -7431,6 +7444,7 @@ var YaGames;
                 LocalStorageWrapper.onloadPromise_) : Promise.resolve(Se)
             }
             static getCustomLocalStorage() {
+                console.log("--fx--getCustomLocalStorage--");
                 if ("function" != typeof Proxy)
                     return null;
                 return new Proxy({
@@ -7487,6 +7501,7 @@ var YaGames;
                 !0)
             }
             static backup() {
+                console.log("--fx--backup--");
                 const e = Object.create(null);
                 for (let t = 0; t < Se.length; t++) {
                     const r = Se.key(t);
@@ -7509,6 +7524,7 @@ var YaGames;
         LocalStorageWrapper.onloadPromise_ = null;
         const Ce = new class ClipboardPublic {
             writeText(e) {
+                console.log("--fx--writeText--");
                 try {
                     e = String(e)
                 } catch (r) {
@@ -7751,6 +7767,7 @@ var YaGames;
         }
         ;
         function errorListenerLogger(e, r) {
+            console.log("--fx--errorListenerLogger--");
             r && (e.type = r),
             t.Z.postToParent({
                 data: e,
@@ -7861,6 +7878,7 @@ var YaGames;
         }();
         const Fe = new class Feedback {
             canReview() {
+                console.log("--fx--canReview--");
                 return new Promise((r=>{
                     t.Z.postToParent({
                         type: "feedback",
@@ -7877,6 +7895,7 @@ var YaGames;
                 ))
             }
             requestReview() {
+                console.log("--fx--requestReview--");
                 return new Promise((r=>{
                     t.Z.postToParent({
                         type: "feedback",
@@ -7904,6 +7923,7 @@ var YaGames;
         ;
         const Ge = {
             allow() {
+                console.log("--fx--allow--");
                 t.Z.postToParent({
                     type: "notifications",
                     action: "allow"
@@ -7980,6 +8000,7 @@ var YaGames;
             }(He()(e, t))
         }
         function loadOptions() {
+            console.log("--fx--loadOptions--");
             return new Promise(((e,r)=>{
                 t.Z.postToParent({
                     type: "options",
@@ -8012,6 +8033,7 @@ var YaGames;
                 this._requestedScopes = this._validateRequestedScopes(t)
             }
             show() {
+                console.log("--fx--show--");
                 return new Promise(((e,r)=>{
                     t.Z.postToParent({
                         type: "scopes",
@@ -8035,6 +8057,7 @@ var YaGames;
             }
         }
         function _getPlayer(e={}, r=!0) {
+            console.log("--fx--_getPlayer--");
             return t.Z.postToParent({
                 type: "player",
                 action: "fetch",
@@ -8127,6 +8150,8 @@ var YaGames;
                 return Boolean(this._parentWindowInFullscreen)
             }
             _requestFullscreen({force: r=!1}={}) {
+                console.log("--fx--_requestFullscreen--");
+
                 return this._hasFullscreenElement() ? Promise.resolve() : r || this._isFullscreenEnabled() ? new Promise(((r,n)=>{
                     t.Z.postToParent({
                         type: "screen-manager",
@@ -8142,6 +8167,7 @@ var YaGames;
                 )) : Promise.reject(new Error("Fullscreen disabled"))
             }
             _exitFullscreen() {
+                console.log("--fx--_exitFullscreen--");
                 return this._hasFullscreenElement() ? new Promise(((r,n)=>{
                     t.Z.postToParent({
                         type: "screen-manager",
@@ -8156,6 +8182,7 @@ var YaGames;
                 )) : Promise.resolve()
             }
             _toggleFullscreen({force: r=!1}={}) {
+                console.log("--fx--_toggleFullscreen--");
                 return r || this._isFullscreenEnabled() ? new Promise(((r,n)=>{
                     t.Z.postToParent({
                         type: "screen-manager",
@@ -8246,6 +8273,7 @@ var YaGames;
                 t || []
             }
             function notifyListenersChange(e) {
+                console.log("--fx--notifyListenersChange--");
                 t.Z.postToParent({
                     type: "sdk-internal-event",
                     action: "listeners-change",
@@ -8311,6 +8339,7 @@ var YaGames;
         ;
         const Qe = new class Shortcut {
             canShowPrompt() {
+                console.log("--fx--canShowPrompt--");
                 return new Promise((r=>{
                     t.Z.postToParent({
                         type: "shortcutManager",
@@ -8327,6 +8356,7 @@ var YaGames;
                 ))
             }
             showPrompt() {
+                console.log("--fx--showPrompt--");
                 return new Promise((r=>{
                     t.Z.postToParent({
                         type: "shortcutManager",
@@ -8412,6 +8442,7 @@ var YaGames;
                     HISTORY_BACK: ze.HISTORY_BACK
                 },
                 this.dispatchEvent = function getSdkEventsDispatcher() {
+                    console.log("--fx--getSdkEventsDispatcher--");
                     return function dispatchEvent(e, r) {
                         return new Promise(((n,o)=>{
                             if (!(e in $e)) {
